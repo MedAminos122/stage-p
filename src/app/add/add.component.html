@@ -1,0 +1,63 @@
+<div class="col-md-6 user-container">
+<h2 class="text-center"> Ajouter un employé</h2>
+<form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="code_cnss">code cnss</label>
+        <input type="text" formControlName="cnss"
+        placeholder="Donner votre code cnss"
+        name="cnss" class="form-control"  id="code_cnss"/>
+    </div>
+    
+    <div class="form-group">
+        <label for="nom_emp">nom :</label>
+        <input type="text" formControlName="nom"
+        placeholder="Donner un nom "
+        name="nom" class="form-control"  id="nom_emp"/>
+    </div>
+
+    <div class="form-group">
+        <label for="prenom_emp">prenom :</label>
+        <input type="text" formControlName="prenom"
+        placeholder="Donner un prenom"
+        name="prenom" class="form-control"  id="prenom_emp"/>
+    </div>
+
+    <div class="form-group">
+        <label for="age_emp">age :</label>
+        <input type="text" formControlName="age"
+        placeholder="Donner un age"
+        name="age" class="form-control"  id="age_emp"/>
+    </div>
+
+    <div class="form-group">
+        <label for="date_demp">Date de debut du stage :</label>
+        <input type="text" formControlName="date_debut"
+        placeholder="Donner la date du debut du stage"
+        name="date_debut" class="form-control"  id="date_demp"/>
+    </div>
+
+    <div class="form-group">
+        <label for="date_femp">Date du fin du stage :</label>
+        <input type="text" formControlName="date_fin"
+        placeholder="Donner la date du fin du stage"
+        name="date_fin" class="form-control"  id="date_femp"/>
+    </div>
+
+    <div class="form-group">
+        <label for="tc">Type du contract :</label>
+        <input type="text" formControlName="type_contract"
+        placeholder="Donner le type du cntract"
+        name="type_contract" class="form-control"  id="tc"/>
+    </div>
+
+    <div class="form-group">
+        <label for="nbren">Nombre d'enfant </label>
+        <input type="text" formControlName="nbr_enfant"
+        placeholder="Donner le nombre des descendants"
+        name="nbr_enfant" class="form-control"  id="nbren"/>
+    </div>
+
+    <button class="btn btn-success">Ajouter </button>
+    <button><a href="view">Voir liste</a></button>
+</form>
+</div>

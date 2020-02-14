@@ -1,0 +1,22 @@
+<div class="col-md-6 user-container">
+    <h2 class="text-center"> Ajouter un employé</h2>
+    <h3 *ngIf="message">{{message}}</h3>
+    <form [formGroup]="loginForm" (ngSubmit)="Login()">
+        <div class="form-group">
+            <label for="us">nom du utilisateur</label>
+            <input type="text" formControlName="username"
+            placeholder="Donner le nom du utilisateur"
+            name="username" class="form-control"  id="us" [value]="us"  />
+        </div>
+        
+        <div class="form-group">
+            <label for="pss">mot de passe</label>
+            <input type="password" formControlName="password"
+            placeholder="Donner un mot de passe"
+            name="password" class="form-control"  id="pss" [value]="us"/>
+        </div>
+    
+        
+    <button class="btn btn-success" [routerLink]="['/ajout']"> Valider </button>
+    </form>
+    </div>

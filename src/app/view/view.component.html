@@ -1,0 +1,25 @@
+<table>
+    <tr>
+        <th>num cnss</th>
+        <th>nom</th>
+        <th>prenom</th>
+        <th>age</th>
+        <th>date debut</th>
+        <th>date fin</th>
+        <th>type du contract</th>
+        <th>nombre de descandants</th>
+    </tr>
+    <tr *ngFor="let t of Employee">
+        <td> {{t.cnss}}</td>
+        <td>{{t.nom}}</td>
+        <td>{{t.prenom}}</td>
+        <td>{{t.age}}</td>
+        <td>{{t.date_debut}} </td>
+        <td>{{t.date_fin}}</td>
+        <td>{{t.type_contract}}</td>
+        <td>{{t.nbr_enfant}}</td>
+        <td><button (click)="modifier(t)">Editer</button></td>
+        <td><button (click)="Supprimer(t)">supprimer</button></td>
+    </tr>
+</table>
+<button><a href="ajout">Ajouter un employee</a></button>
