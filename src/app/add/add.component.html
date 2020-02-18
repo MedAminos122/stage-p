@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <div class="col-md-6 user-container">
 <h2 class="text-center"> Ajouter un employé</h2>
 <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
@@ -58,6 +59,6 @@
     </div>
 
     <button class="btn btn-success">Ajouter </button>
-    <button><a href="view">Voir liste</a></button>
+    <button (click)="voir_liste()" class="btn btn-warning">Voir liste</button>
 </form>
 </div>

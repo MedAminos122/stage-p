@@ -1,16 +1,40 @@
-<table>
+
+<nav class="navbar navbar-dark bg-primary">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">WebSiteName</a>
+      </div>
+      <ul class="nav navbar-nav">
+        
+      </ul>
+      <form class="navbar-form navbar-left" action="/action_page.php">
+        <div class="form-group">
+         <label for="es">recherche</label>
+      <input type="text" name="recherche" [(ngModel)]="search"  class="na"/>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+         <button   (click)="logout()"class="btn btn-info">Logout</button>
+      </form>
+     
+    </div>
+  </nav>
+<table class="table table-bordered">
+    <thead class="thead-dark">
     <tr>
-        <th>num cnss</th>
-        <th>nom</th>
-        <th>prenom</th>
-        <th>age</th>
-        <th>date debut</th>
-        <th>date fin</th>
-        <th>type du contract</th>
-        <th>nombre de descandants</th>
+        <th scope="col">num cnss</th>
+        <th scope="col">nom</th>
+        <th scope="col">prenom</th>
+        <th scope="col">age</th>
+        <th scope="col">date debut</th>
+        <th scope="col">date fin</th>
+        <th scope="col">type du contract</th>
+        <th scope="col">nombre de descandants</th>
+        <th colspan="2" scope="col">Action possible</th>
     </tr>
-    <tr *ngFor="let t of Employee">
-        <td> {{t.cnss}}</td>
+</thead>
+<tbody>
+    <tr *ngFor="let t of Employee | filter:search">
+        <td scope="row"> {{t.cnss}}</td>
         <td>{{t.nom}}</td>
         <td>{{t.prenom}}</td>
         <td>{{t.age}}</td>
@@ -18,8 +42,9 @@
         <td>{{t.date_fin}}</td>
         <td>{{t.type_contract}}</td>
         <td>{{t.nbr_enfant}}</td>
-        <td><button (click)="modifier(t)">Editer</button></td>
-        <td><button (click)="Supprimer(t)">supprimer</button></td>
+        <td><button (click)="modifier(t)" class="btn btn-warning">Editer</button></td>
+        <td><button (click)="Supprimer(t)" class="btn btn-danger">supprimer</button></td>
     </tr>
+</tbody>
 </table>
-<button><a href="ajout">Ajouter un employee</a></button>
+<button (click)="ajouter()" class="btn btn-info">Ajouter un employee</button>

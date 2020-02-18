@@ -11,6 +11,7 @@ import { typeWithParameters } from '@angular/compiler/src/render3/util';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  login:boolean
   us:string="";
   invalidLogin: boolean = false;
   message: any;
@@ -19,14 +20,14 @@ export class LoginComponent implements OnInit {
               private router: Router,
               private apiService: EmployeeService) { }
    ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      username: ['', Validators.compose([Validators.required])],
-      password: ['', Validators.required]
-    });
+  //  this.loginForm = this.formBuilder.group({
+    //  username: ['', Validators.compose([Validators.required])],
+      //password: ['', Validators.required]
+    //});
    }
 
    Login(){
-     console.log(this.loginForm.value);
+     //console.log(this.loginForm.value);
      if (this.loginForm.invalid) {
       return;
     }
@@ -39,8 +40,9 @@ export class LoginComponent implements OnInit {
      this.apiService.login(loginData).subscribe((data: any) => {
       
       this.message = data.message;
-     // console.log(data.token);
+     console.log(data.token);
       if(data.token) {
+        this.login=true;
           window.localStorage.setItem('token', data.token);
           this.router.navigate(['view']);
        } else {
@@ -51,5 +53,30 @@ export class LoginComponent implements OnInit {
  
 
    }
+   username:string;
+   password:string;
+   loginNow()
+   {
+       if((this.username=="aminos") &&(this.password=="markstive"))
+       {
+         this.apiService.session=true;
+         this.router.navigate(['view']);
+       }
+       else
+       {
+         this.router.navigate(['login']);
+         alert("nom utilisateur ou mot de passe n'est pas correcte");
+         this.username="";
+         this.password="";
+       }
+   }
+   getPassword()
+   {res:String;
+  const res=prompt("quel est votre pays préféré");
+  if(res=="france")
+  {alert("password :      markstive");}
+  
+  
+  }
 
 }

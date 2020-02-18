@@ -17,8 +17,12 @@ token:any;
   constructor(private formBuilder:FormBuilder,private apiService:EmployeeService,private router:Router,private routes:ActivatedRoute) { }
 
   ngOnInit() {
-    this.token=window.localStorage.getItem('token');
+   /* this.token=window.localStorage.getItem('token');
     if(!this.token)
+    {
+      this.router.navigate(['login']);
+    }*/
+    if(this.apiService.session==false)
     {
       this.router.navigate(['login']);
     }

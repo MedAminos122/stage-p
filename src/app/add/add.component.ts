@@ -24,11 +24,15 @@ cnss : string;
   constructor(private formBuilder:FormBuilder,private apiService:EmployeeService,private router:Router) { }
 
   ngOnInit() {
-    this.token=window.localStorage.getItem('token');
-    if(!this.token)
+    if(this.apiService.session==false)
     {
       this.router.navigate(['login']);
     }
+   /* this.token=window.localStorage.getItem('token');
+    if(!this.token)
+    {
+      this.router.navigate(['login']);
+    }*/
     console.log(this.token);
     this.addForm=this.formBuilder.group(
       {
@@ -42,7 +46,7 @@ cnss : string;
         nbr_enfant : ['',[Validators.required,Validators.maxLength(255)]]
 
       }
-    );
+    )
   }
   onSubmit()
   {
@@ -53,16 +57,11 @@ cnss : string;
     )
    
   }
-  intialiser()
+  voir_liste()
   {
-    this.cnss=null;
-    this.nom=null;
-    this.prenom=null;
-    this.age=null;
-    this.date_debut=null;
-    this.date_fin=null;
-    this.type_contract=null;
-    this.nbr_enfant=null;
+    this.apiService.session=true;
+    this.router.navigate(['view']);
   }
+  
 
 }

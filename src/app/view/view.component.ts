@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../employee.service';
 import { Employee } from '../employee';
-import { Router } from '@angular/router';
+import { Router , ActivatedRoute } from '@angular/router';
+import { FormBuilder ,FormGroup,FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-view',
@@ -10,16 +11,22 @@ import { Router } from '@angular/router';
 })
 export class ViewComponent implements OnInit {
 token:any;
-  constructor(private _employeesService:EmployeeService,private router :Router) { }
+search:string;
+  constructor(private apiService:EmployeeService,private router :Router,private routes:ActivatedRoute,private formbuilder:FormBuilder) { }
   Employee: Employee[];
   ngOnInit() {
-    this.token=window.localStorage.getItem('token');
-    if(!this.token)
+    if(this.apiService.session==false)
     {
       this.router.navigate(['login']);
     }
-    this._employeesService.getemployees()
-    .subscribe((data: Employee[])=> 
+    //this.token=window.localStorage.getItem('token');
+    //console.log(this.token);
+   /* if(!this.token)
+    {
+      this.router.navigate(['login']);
+    }*/
+    this.apiService.getemployees()
+    .subscribe((data: any)=> 
     {this.Employee=data;
     console.log(this.Employee);}
     );
@@ -27,7 +34,7 @@ token:any;
   Supprimer(t:Employee)
   {
     
-      this._employeesService.deleteEmployee(t)
+      this.apiService.deleteEmployee(t)
       .subscribe(
         data=>{this.Employee=this.Employee.filter(u =>u !== t);}
       );
@@ -36,6 +43,17 @@ token:any;
   {
 
 this.router.navigate(['modifier/'+employee.cnss]);
+  }
+  ajouter()
+  {
+    this.apiService.session=true;
+    this.router.navigate(['ajout']);
+  }
+  logout()
+  {
+ this.apiService.session=false;
+    this.router.navigate(['login']);
+
   }
 
 }

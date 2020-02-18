@@ -9,8 +9,9 @@ import { ViewComponent } from './view/view.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
-import { TokenInterceptor } from './interceptors';
+import { TokenInterceptor } from './intercepters';
 import { MenuComponent } from './menu/menu.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 //import {TokenInterceptors} from './interceptors';
 
 @NgModule({
@@ -28,6 +29,7 @@ import { MenuComponent } from './menu/menu.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    Ng2SearchPipeModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,

@@ -3,21 +3,22 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {HttpClient} from '@angular/common/http'
 import { ApiResponse } from './api-response';
+import {ApiRest} from './apiRest';
 import { Employee } from './employee';
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
-
+session:boolean=false;
   constructor(private http:HttpClient) { }
   baseUrl:string="http://localhost/htdocs/crud/gestionhr/";
   createEmployee(employee:Employee):Observable<ApiResponse>
   {
 return this.http.post<ApiResponse>(this.baseUrl+"insert.php",employee);
   }
-  getemployees()
+  getemployees():Observable<ApiRest>
 {
-  return this.http.get<Employee []>(this.baseUrl+"list.php");
+  return this.http.get<ApiRest>(this.baseUrl+"list.php");
 }
 deleteEmployee(t : Employee)
 {
@@ -34,8 +35,8 @@ update(employee : Employee):Observable<ApiResponse>
   return this.http.post<ApiResponse>(this.baseUrl+"update.php",employee);
 }
 
-login(loginData) :Observable<ApiResponse>
+login(loginData) :Observable<ApiRest>
 {
-return this.http.post<ApiResponse>(this.baseUrl+'login.php',loginData);
+return this.http.post<ApiRest>(this.baseUrl+'/login2.php',loginData);
 }
 }

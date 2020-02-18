@@ -1,4 +1,5 @@
-<div class="col-md-6 user-container">
+
+<!--<div class="col-md-6 user-container">
     <h2 class="text-center"> Ajouter un employé</h2>
     <h3 *ngIf="message">{{message}}</h3>
     <form [formGroup]="loginForm" (ngSubmit)="Login()">
@@ -17,6 +18,48 @@
         </div>
     
         
-    <button class="btn btn-success" [routerLink]="['/ajout']"> Valider </button>
+    <button class="btn btn-success" > Valider </button>
     </form>
+    </div>!-->
+   <!--
+       formulaire de login simple :
+       <div>
+        <form>
+            <div class="form-group">
+                <label>Nom utilisateur :</label>
+            <input type="text" name="username" [(ngModel)]="username" />
+            </div>
+
+            <div class="form-group">
+                <label>mot de passe :</label>
+            <input type="text" name="password" [(ngModel)]="password" />
+            </div>
+            <button (click)="loginNow()">Login</button>
+            
+            
+        </form>
     </div>
+   !--> 
+   <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+  
+      <!-- Icon -->
+      <div class="fadeIn first">
+       <!--<img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />--> 
+      </div>
+  
+      <!-- Login Form    class="fadeIn fourth"  -->
+      <form>
+        <input type="text" id="login" class="fadeIn second" name="username" [(ngModel)]="username" placeholder="nom du utilisateur">
+        <input type="password" id="password" class="fadeIn third" name="password" [(ngModel)]="password" placeholder="mot de passe">
+        <input type="submit" class="fadeIn fourth" value="Log In" (click)="loginNow()">
+      </form>
+  
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover" href="#" (click)="getPassword()" >Forgot Password?</a>
+      </div>
+  
+    </div>
+  </div>

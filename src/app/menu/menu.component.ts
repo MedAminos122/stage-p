@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { EmployeeService } from '../employee.service';
 
 @Component({
   selector: 'app-menu',
@@ -7,14 +8,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  v:true;
+  b;
   logout()
   {
-    window.localStorage.removeItem('token');
+ this.a.session=false;
     this.router.navigate(['login']);
 
   }
-  constructor(private router:Router) { }
+  constructor(private router:Router,private a:EmployeeService) { }
 
   ngOnInit() {
   }
